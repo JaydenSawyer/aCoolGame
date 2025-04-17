@@ -15,6 +15,7 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     var play: GameScene!
+    var ball: SKSpriteNode!
     @IBOutlet weak var coinLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func jumpButton(_ sender: Any) {
-        play.ball.physicsBody?.velocity.dy = 1000
-      
+        print("Does this work")
+        ball.physicsBody?.applyImpulse(CGVector(dx: 250, dy: 425))
+        
     }
 }
