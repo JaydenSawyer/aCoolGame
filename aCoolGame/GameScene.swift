@@ -43,12 +43,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
 
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        
         cam.position.x =  ball.position.x + 300
 
     }
     func reset() {
         ball.position = CGPoint(x: 0, y: -960)
+        
     }
 
 
