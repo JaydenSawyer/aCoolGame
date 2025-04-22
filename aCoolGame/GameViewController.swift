@@ -6,63 +6,42 @@
 //
 
 import UIKit
-
 import SpriteKit
-
 import GameplayKit
 
-
-
 class GameViewController: UIViewController {
+    
     var play: GameScene!
-    var ball: SKSpriteNode!
     @IBOutlet weak var coinLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
-        
-        if let view = self.view as! SKView? {
-            
-            if let scene = SKScene(fileNamed: "GameScene") {
-                
-                
+        if let view = self.view as? SKView {
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 scene.scaleMode = .aspectFill
-                
-           
-                play = scene as? GameScene
-                
-             
+                play = scene
                 view.presentScene(scene)
-                
             }
-            
-            
             
             view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
-            
         }
-        
     }
-    
-    
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscapeRight
     }
-    
-    
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     @IBAction func jumpButton(_ sender: Any) {
-        print("Does this work")
-        ball.physicsBody?.applyImpulse(CGVector(dx: 250, dy: 425))
-        
+        play.jump()
     }
 }
